@@ -1,17 +1,32 @@
 
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Form, Input, Button } from 'antd';
+import { Button, Form, Input, Select } from 'antd';
+import { useDispatch } from 'react-redux';
+import { addUser } from "../../redux/userBuismess"
+
+const { Option } = Select; 
 
 const UserInfo = () => {
+    console.log("USER:::", addUser)
     let navigate = useNavigate();
+    const dispatch = useDispatch();
     const onFinish = (values) => {
         console.log('Success:', values);
+        const { buisnessName, contactEmail } = values
+        const user = {
+
+        }
+        dispatch(addUser(values))
     };
 
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
     };
+
+    const next = () => {
+        console.log("NEXT")
+    }
     return (
         <>
             <h1>User Info</h1>
@@ -32,7 +47,7 @@ const UserInfo = () => {
             >
                 <Form.Item
                     label="Business Name"
-                    name="businessName"
+                    name="buisnessName"
                     rules={[
                         {
                             required: true,
@@ -56,7 +71,25 @@ const UserInfo = () => {
                     <Input />
                 </Form.Item>
 
-
+                <Form.Item
+                    name="industryId"
+                    label="Industry Id"
+                    rules={[
+                        {
+                            required: true,
+                        },
+                    ]}
+                >
+                    <Select
+                        placeholder="Select Industry Id"
+                        allowClear
+                    >
+                        <Option value="10537">Plumber</Option>
+                        <Option value="10391">Software developer</Option>
+                        <Option value="10415">Lawyer</Option>
+                        <Option value="10109">Handyman</Option>
+                    </Select>
+                </Form.Item>
 
 
                 <Form.Item
@@ -65,7 +98,7 @@ const UserInfo = () => {
                         span: 16,
                     }}
                 >
-                    <Button type="primary" htmlType="submit" onClick={() => { navigate('user_details') }}>
+                    <Button type="primary" htmlType="submit">
                         Next
                     </Button>
                 </Form.Item>
