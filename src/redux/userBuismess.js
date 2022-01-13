@@ -38,7 +38,6 @@ export const userBuisnessSlice = createSlice({
                 }
                 return elem
             })
-            console.log(state.availablePolicyTypes)
         }
     }
 });

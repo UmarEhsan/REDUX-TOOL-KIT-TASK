@@ -9,7 +9,6 @@ import FinalScreen from './pages/FinalScreen';
 
 function App() {
   const { buisnessUser } = useSelector((state) => state.buisnessUser)
-  console.log("BUISNESS USER::", buisnessUser)
   return (
     <Router>
       <div className="App">

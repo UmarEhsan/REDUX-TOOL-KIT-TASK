@@ -8,11 +8,9 @@ import { addUser } from "../../redux/userBuismess"
 const { Option } = Select; 
 
 const UserInfo = () => {
-    console.log("USER:::", addUser)
     let navigate = useNavigate();
     const dispatch = useDispatch();
     const onFinish = (values) => {
-        console.log('Success:', values);
         const { buisnessName, contactEmail, industryId } = values
         const user = {
             buisnessName,
@@ -24,13 +22,7 @@ const UserInfo = () => {
         navigate("/user_details")
     };
 
-    const onFinishFailed = (errorInfo) => {
-        console.log('Failed:', errorInfo);
-    };
-
-    const next = () => {
-        console.log("NEXT")
-    }
+   
     return (
         <>
             <h1>User Info</h1>
@@ -46,7 +38,6 @@ const UserInfo = () => {
                     remember: true,
                 }}
                 onFinish={onFinish}
-                onFinishFailed={onFinishFailed}
                 autoComplete="off"
             >
                 <Form.Item

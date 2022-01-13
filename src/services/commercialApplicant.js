@@ -9,7 +9,6 @@ export const applicantApi = createApi({
     endpoints: (builder) => ({
         createCommercialApplicant: builder.mutation({
             query: (newApplicant) => {
-                console.log("Create Applicant", newApplicant)
                 return {
                     url: 'commercial/applications',
                     method: 'POST',

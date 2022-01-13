@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 
 function FinalScreen() {
   const { availablePolicyTypes }  = useSelector((state) => state.buisnessUser)
-  console.log("FINAL SCREEN", availablePolicyTypes)
   const listItems = availablePolicyTypes.map((policy) =>
     <li>{policy}</li>
   );
