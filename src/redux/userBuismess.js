@@ -10,28 +10,39 @@ export const userBuisnessSlice = createSlice({
         buisnessUser: {
             buisnessName: '',
             contactEmail: '',
-            grossAnnualSales: 0,
-            annualPayroll: 0,
-            numEmployess: 0,
             industryId: '',
-            locations: [
-                {
-                    zip: ''
-                }
-            ]
-        }
-       
+        },
+        
+        availablePolicyTypes: []
+
     },
     reducers: {
         addUser: (state, action) => {
             const user = action.payload
-            for(let key in user){
-                state[key] = user[key]
+            for (let key in user) {
+                state['buisnessUser'][key] = user[key]
             }
+
+        },
+        addAvailablePolicy:(state, action) => {
+            const avlPolicy = action.payload
+            state['availablePolicyTypes'] = avlPolicy.map((elem) => {
+                if(elem === 'GL'){
+                    elem = 'General Liability'
+                }
+                else if(elem === 'PL'){
+                    elem = 'Professional Liability'
+                }
+                else{
+                    elem = 'Business Owners Policy'
+                }
+                return elem
+            })
+            console.log(state.availablePolicyTypes)
         }
     }
 });
 
-export const { addUser } = userBuisnessSlice.actions
+export const { addUser, addAvailablePolicy } = userBuisnessSlice.actions
 
 export default userBuisnessSlice.reducer

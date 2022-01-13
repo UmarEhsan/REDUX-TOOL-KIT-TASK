@@ -13,11 +13,15 @@ const UserInfo = () => {
     const dispatch = useDispatch();
     const onFinish = (values) => {
         console.log('Success:', values);
-        const { buisnessName, contactEmail } = values
+        const { buisnessName, contactEmail, industryId } = values
         const user = {
+            buisnessName,
+            contactEmail,
+            industryId
 
         }
-        dispatch(addUser(values))
+        dispatch(addUser(user))
+        navigate("/user_details")
     };
 
     const onFinishFailed = (errorInfo) => {
