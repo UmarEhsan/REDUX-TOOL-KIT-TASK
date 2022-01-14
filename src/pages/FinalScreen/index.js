@@ -8,7 +8,7 @@ function FinalScreen() {
     <li>{policy}</li>
   );
   return (
-    <ul>{availablePolicyTypes.length > 0 ? listItems : 'No policy yet'}</ul>
+    <ul data-testid="final-screen">{availablePolicyTypes.length > 0 ? listItems : 'No policy yet'}</ul>
   );
 }
 

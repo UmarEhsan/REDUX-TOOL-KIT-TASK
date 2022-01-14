@@ -55,7 +55,7 @@ const UserDetails = () => {
     };
 
     return (
-        <>
+        <div data-testid="user-details">
             <h1>User Info</h1>
             <Form
                 name="basic"
